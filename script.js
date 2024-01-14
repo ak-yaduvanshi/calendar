@@ -8,7 +8,8 @@ function renderDate() {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "Octomber", "November", "December"];
 
     let currentMonth = months[dt.getMonth()];
-    document.querySelector("#month").innerHTML = currentMonth;
+    let currentYear = dt.getFullYear();
+    document.querySelector("#month").innerHTML = `${currentMonth} ${currentYear}`;
 
     // find the last date of current month
     let endDate = new Date(dt.getFullYear(), dt.getMonth() + 1, 0);
@@ -59,11 +60,13 @@ document.querySelector(".reset").addEventListener("click", () => {
 document.querySelector(".prev").addEventListener("click", () => {
     dt.setMonth(dt.getMonth() - 1);
     document.querySelector(".reset").style.display = "flex";
+    document.querySelector("#date-str").style.display = "none"
     renderDate();
 })
 document.querySelector(".next").addEventListener("click", () => {
     dt.setMonth(dt.getMonth() + 1);
     document.querySelector(".reset").style.display = "flex";
+    document.querySelector("#date-str").style.display = "none"
     renderDate();
 })
 
